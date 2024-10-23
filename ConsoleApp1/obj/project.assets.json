@@ -79,11 +79,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\zhuju\\Desktop\\C#Projects\\SeekProject\\SeekWeb\\ConsoleApp1\\ConsoleApp1\\ConsoleApp1.csproj",
+      "projectUniqueName": "C:\\Users\\zhuju\\Desktop\\C#Projects\\SeekProject\\SeekWeb\\Seek_Web_Scraper\\ConsoleApp1\\ConsoleApp1.csproj",
       "projectName": "ConsoleApp1",
-      "projectPath": "C:\\Users\\zhuju\\Desktop\\C#Projects\\SeekProject\\SeekWeb\\ConsoleApp1\\ConsoleApp1\\ConsoleApp1.csproj",
+      "projectPath": "C:\\Users\\zhuju\\Desktop\\C#Projects\\SeekProject\\SeekWeb\\Seek_Web_Scraper\\ConsoleApp1\\ConsoleApp1.csproj",
       "packagesPath": "C:\\Users\\zhuju\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\zhuju\\Desktop\\C#Projects\\SeekProject\\SeekWeb\\ConsoleApp1\\ConsoleApp1\\obj\\",
+      "outputPath": "C:\\Users\\zhuju\\Desktop\\C#Projects\\SeekProject\\SeekWeb\\Seek_Web_Scraper\\ConsoleApp1\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\zhuju\\AppData\\Roaming\\NuGet\\NuGet.Config",
