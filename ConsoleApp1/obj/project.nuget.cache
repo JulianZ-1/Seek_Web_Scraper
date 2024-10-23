@@ -1,0 +1,10 @@
+{
+  "version": 2,
+  "dgSpecHash": "nxrMp1kRkLY=",
+  "success": true,
+  "projectFilePath": "C:\\Users\\zhuju\\Desktop\\C#Projects\\SeekProject\\SeekWeb\\ConsoleApp1\\ConsoleApp1\\ConsoleApp1.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\zhuju\\.nuget\\packages\\htmlagilitypack\\1.11.67\\htmlagilitypack.1.11.67.nupkg.sha512"
+  ],
+  "logs": []
+}
