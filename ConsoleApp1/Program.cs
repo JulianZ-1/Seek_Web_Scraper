@@ -1,11 +1,12 @@
 ﻿using HtmlAgilityPack;
+using static ConsoleApp1.@class;
 
 internal class Program
 {
     private static async Task Main(string[] args)
     {
         //Setting up var
-        List<string> juniorJobs = new List<string>();
+        List<Job> juniorJobs = new List<Job>();
         int maxJobCount = 20;
         int currentCount = 0;
         int pageNum = 1;
@@ -41,10 +42,12 @@ internal class Program
                     foreach (var jrRole in jrRoles)
                     {
                         var jobTitle = jrRole.SelectSingleNode(".//a[@data-automation='jobTitle' and contains(translate(., 'JUNIOR', 'junior'), 'junior')]");
+
                         if (jobTitle != null)
                         {
-                            var stringJobTitle = jobTitle.InnerText.Trim();
-                            juniorJobs.Add(stringJobTitle);
+                            string stringJobTitle = jobTitle.InnerText.Trim();
+                            string jobURL = jobTitle.GetAttributeValue("href", "");
+                            juniorJobs.Add(new Job { Title = stringJobTitle, Url = $"https://www.seek.com{jobURL}" });
                             currentCount++;
 
                             if (currentCount >= maxJobCount)
@@ -75,9 +78,42 @@ internal class Program
 
         }
         //Printing out the list
+        Console.Clear();
         for (int i = 0; i < juniorJobs.Count; i++)
         {
-            Console.WriteLine(juniorJobs[i]);
+            Console.WriteLine($"{i + 1}. {juniorJobs[i].Title}");
+        }
+        Console.Write("Please enter the index of the job you would like to read: ");
+
+
+        if (int.TryParse(Console.ReadLine(), out int selectedIndex) && selectedIndex > 0 && selectedIndex <= juniorJobs.Count)
+        {
+            var selectedJob = juniorJobs[selectedIndex - 1];
+            Console.WriteLine($"fetching {selectedJob.Title}....");
+
+            HttpResponseMessage response = await client.GetAsync(selectedJob.Url);
+            if (response.IsSuccessStatusCode)
+            {
+                string jobPageHtml = await response.Content.ReadAsStringAsync();
+                var jobDoc = new HtmlDocument();
+                jobDoc.LoadHtml(jobPageHtml);
+
+                var descriptionNode = jobDoc.DocumentNode.SelectSingleNode(".//div[@data-automation='jobAdDetails']");
+                if (descriptionNode != null)
+                {
+                    string jobDescription = descriptionNode.InnerText.Trim();
+                    Console.Clear();
+                    Console.WriteLine($"{jobDescription}");
+                }
+                else
+                {
+                    Console.WriteLine("No description");
+                }
+            }
+        }
+        else
+        {
+            Console.WriteLine("Invalid input");
         }
     }
 }
